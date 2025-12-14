@@ -21,15 +21,15 @@ const deployYourVotingContract: DeployFunction = async function (hre: HardhatRun
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
 
-  const ownerAddress = deployer;
+  const ownerAddress = "0xf8501029921213f4b72ab561759cFaaBBFAf6B90";
 
   /// checkpoint 6 //////
-  const verifierAddress = "0x0000000000000000000000000000000000000002"; // placeholder
-  // const verifier = await deploy("HonkVerifier", {
-  //   from: deployer,
-  //   log: true,
-  //   autoMine: true,
-  // });
+  const verifier = await deploy("HonkVerifier", {
+    from: deployer,
+    log: true,
+    autoMine: true,
+  });
+  const verifierAddress = verifier.address;
 
   /// checkpoint 2 //////
   const poseidon3 = await deploy("PoseidonT3", {
